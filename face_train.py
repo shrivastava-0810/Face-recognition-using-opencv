@@ -3,10 +3,9 @@ import numpy as np
 from PIL import Image
 import os
 from sklearn.preprocessing import LabelEncoder
-path = 'D:/Machine Learning A-Z New/Part 8 - Deep Learning/Section 40 - Convolutional Neural Networks (CNN)/opencv/face_dataset'
+path = 'face_dataset'
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-face_cascade = cv2.CascadeClassifier("D:/Machine Learning A-Z New/Part 8 - Deep Learning/Section 40 - Convolutional Neural Networks (CNN)/opencv/haarcascade_frontalface_default.xml");
-# function to get the images and label data
+face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml");
 def getImagesAndLabels(path):
     imagePaths = [os.path.join(path,f) for f in os.listdir(path)]     
     faceSamples=[]
@@ -33,7 +32,4 @@ ids = ids.astype(int)
 ids = label_encoder.fit_transform(ids)
 recognizer.train(faces, np.array(ids))
 # Save the model into trainer/trainer.yml
-recognizer.write('D:/Machine Learning A-Z New/Part 8 - Deep Learning/Section 40 - Convolutional Neural Networks (CNN)/opencv/trainer.yml') 
-# Print the numer of faces trained and end program
-print("\n [INFO] {0} faces trained. Exiting Program".format(len(np.unique(ids))))
-
+recognizer.write('trainer.yml') 
