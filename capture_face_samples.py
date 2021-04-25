@@ -1,7 +1,7 @@
 import cv2
 face_id = input('Enter your face id: ')
 video = cv2.VideoCapture(0)
-face_cascade = cv2.CascadeClassifier("D:/Machine Learning A-Z New/Part 8 - Deep Learning/Section 40 - Convolutional Neural Networks (CNN)/opencv/haarcascade_frontalface_default.xml")
+face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml")
 count = 1
 while True:
     ret, frame = video.read()
@@ -10,7 +10,7 @@ while True:
     for x, y, w, h in faces:
         print(count)
         cv2.rectangle(frame, (x, y), (x+w, y+h), (255, 0, 0), 2)
-        cv2.imwrite('D:/Machine Learning A-Z New/Part 8 - Deep Learning/Section 40 - Convolutional Neural Networks (CNN)/opencv/face_dataset/' + str(face_id) + '.'  +  str(count) + ".jpg", gray[y:y+h,x:x+w])
+        cv2.imwrite('face_dataset/' + str(face_id) + '.'  +  str(count) + ".jpg", gray[y:y+h,x:x+w])
         count+=1
         
     frame = cv2.flip(frame, 1)
