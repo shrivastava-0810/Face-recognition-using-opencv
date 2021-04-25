@@ -2,11 +2,11 @@ import cv2
 import numpy as np
 import os 
 recognizer = cv2.face.LBPHFaceRecognizer_create()
-recognizer.read('D:/Machine Learning A-Z New/Part 8 - Deep Learning/Section 40 - Convolutional Neural Networks (CNN)/opencv/trainer.yml') 
-face_cascade = cv2.CascadeClassifier("D:/Machine Learning A-Z New/Part 8 - Deep Learning/Section 40 - Convolutional Neural Networks (CNN)/opencv/haarcascade_frontalface_default.xml");
+recognizer.read('trainer.yml') 
+face_cascade = cv2.CascadeClassifier("haarcascade_frontalface_default.xml");
 font = cv2.FONT_HERSHEY_SIMPLEX
 id = 0
-names = ['Aastik'] 
+names = ['Person_Name'] 
 video = cv2.VideoCapture(0)
 video.set(3, 640) # set video widht
 video.set(4, 480) # set video height
@@ -57,7 +57,6 @@ while True:
     k = cv2.waitKey(10) & 0xff 
     if k == 27:
         break
-
-print("\n [INFO] Exiting Program and cleanup stuff")
+        
 video.release()
 cv2.destroyAllWindows()
